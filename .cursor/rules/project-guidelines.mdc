@@ -1,0 +1,23 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+---
+description: Job Optimizer – standards d’ingénierie (front & back)
+globs:
+  - "**/*"                # TOUT le repo
+alwaysApply: true
+---
+
+## 🌐 Repository-wide Principles
+- **Single Source of Truth :** logique métier dans `server/src/services/**`.
+- **Type Safety Everywhere :** TypeScript `strict` activé partout.
+- **Fail Fast :** exhaustive `switch`, `never`, assertions, etc.
+
+## 🗂️ Répertoire de référence
+
+```text
+job-optimizer/
+├── client/                 # React + TypeScript + Tailwind
+└── server/                 # Node + Express + TypeScript
