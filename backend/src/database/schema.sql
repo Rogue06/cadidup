@@ -76,7 +76,20 @@ CREATE TABLE job_applications (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+-- Table pour les tokens de réinitialisation de mot de passe
+CREATE TABLE password_reset_tokens (
+    id SERIAL PRIMARY KEY,
+    user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    token VARCHAR(255) NOT NULL,
+    expires_at TIMESTAMP NOT NULL,
+    used BOOLEAN DEFAULT FALSE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT unique_active_token UNIQUE (user_id, token)
+);
+
 -- Index pour performances et anti-abus
 CREATE INDEX idx_users_email_verified ON users(email, email_verified);
 CREATE INDEX idx_users_device_fingerprint ON users(device_fingerprint);
-CREATE INDEX idx_analyses_user_created ON analyses(user_id, created_at); 
+CREATE INDEX idx_analyses_user_created ON analyses(user_id, created_at);
+CREATE INDEX idx_password_reset_tokens_token ON password_reset_tokens(token);
+CREATE INDEX idx_password_reset_tokens_user_id ON password_reset_tokens(user_id); 

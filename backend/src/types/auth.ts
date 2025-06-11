@@ -38,3 +38,22 @@ export interface AuthResponse {
   user: Omit<User, "password_hash">;
   token: string;
 }
+
+export interface ForgotPasswordDTO {
+  email: string;
+}
+
+export interface ResetPasswordDTO {
+  token: string;
+  password: string;
+  confirmPassword: string;
+}
+
+export interface PasswordResetToken {
+  id: number;
+  userId: number;
+  token: string;
+  expiresAt: Date;
+  used: boolean;
+  createdAt: Date;
+}
