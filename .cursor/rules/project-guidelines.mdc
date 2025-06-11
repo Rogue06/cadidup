@@ -1,7 +1,7 @@
 ---
 description: 
 globs: 
-alwaysApply: false
+alwaysApply: true
 ---
 ---
 description: Job Optimizer – standards d’ingénierie (front & back)
@@ -20,4 +20,29 @@ alwaysApply: true
 ```text
 job-optimizer/
 ├── client/                 # React + TypeScript + Tailwind
-└── server/                 # Node + Express + TypeScript
+└── server/                 # Node + Express + TypeScript 
+```
+
+
+
+## 🔒 Sécurité
+1. Validation Zod sur chaque requête.
+2. JWT HS256, secret via `process.env.JWT_SECRET`.
+3. `helmet()`, CSP, rate-limiting (100 req/15 min).
+4. Logger **pino** + **Sentry** sans PII.
+5. Purge des CV au bout de 30 jours (cron).
+
+## 🧪 Qualité & CI
+- ESLint (Airbnb TS) + Prettier (`printWidth 100`, `singleQuote`, etc.).
+- Couverture cible : 90 % services, 80 % routes, 70 % UI.
+- GitHub Actions : lint → test → build (client & server).
+
+## 📦 Versioning & Commits
+- Commits **Conventional Commits**.
+- Husky + commitlint + lint-staged.
+
+## 🚀 Checklist de livraison (Agent)
+1. Tests d’abord (TDD).
+2. Mise à jour des schémas Zod & types.
+3. `npm run lint && npm test`.
+4. Migration DB en cas de besoin.

@@ -1,5 +1,26 @@
 ---
-description:
-globs:
-alwaysApply: false
+description: 
+globs: 
+alwaysApply: true
 ---
+---
+description: Back-end code standards (Express, Prisma, OpenAI calls)
+globs:
+  - "server/src/**/*.ts"
+---
+
+## 🌳 Architecture
+- **Routes** dans `server/src/routes/` (1 fichier = 1 ressource).
+- **Services** dans `server/src/services/` (stateless).
+
+## 🔒 Sécurité
+1. Validation Zod sur chaque requête.
+2. Auth JWT + refresh rotatif.
+3. Rate-limit Redis : 10 analyses/h IP.
+
+## 🧰 Tooling
+- Logger **pino**.
+- Tests Jest + Supertest.
+
+ ## 🚫 Interdictions (anti-scaffolding) - **Ne jamais exécuter de commandes shell** (`npm init`, `npm install`, `mkdir`, `touch`, etc.). - Si le chemin n’existe pas, **crée quand même le fichier** dans le diff ; Git gèrera les dossiers manquants.
+@templates/express-route.sample.ts

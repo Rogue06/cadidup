@@ -1,5 +1,32 @@
 ---
-description:
-globs:
-alwaysApply: false
+description: 
+globs: 
+alwaysApply: true
 ---
+---
+description: Front-end code standards (React, Tailwind, TanStack Query)
+globs:
+  - "client/src/**/*.{ts,tsx}"
+autofix: true
+---
+
+## 📐 React & TS
+1. **Function components** seulement, pas de classes.
+2. Pas d’`export default` ; `export const Button`.
+3. Props via `interface`, pas `type`.
+
+## 🎨 Tailwind
+- Ordre : layout → size → spacing → border → color → state.
+- Classes longues ? Utilise `clsx` ou shadcn/ui.
+
+## 📡 Data & State
+- TanStack Query pour les requêtes.
+- `react-hook-form` + **Zod** pour les formulaires.
+
+## 🧪 Tests
+- Vitest + React-Testing-Library + axe-core.
+
+## 📝 PR Checklist
+- [ ] Storybook ajouté.
+- [ ] Tests > 70 % couverture UI.
+- [ ] ESLint/Prettier OK.
